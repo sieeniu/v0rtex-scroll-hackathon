@@ -1,4 +1,5 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import { montserratFont } from "./typography";
 
 const GlobalStyle = createGlobalStyle`
     html, body, #__next, main {
@@ -7,7 +8,10 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         padding: 0;
+        margin: 0;
         -webkit-font-smoothing: antialiased;
+        background-color: ${({theme}) => theme.colors.background};
+        ${montserratFont.style}
     }
 
     a {
