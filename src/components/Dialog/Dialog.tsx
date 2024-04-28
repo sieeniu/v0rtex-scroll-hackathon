@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { type PropsWithChildren } from "react";
-import { DialogContent, DialogOverlay, DialogTitle } from "./atoms";
+import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { type PropsWithChildren } from 'react';
+
+import { DialogContent, DialogOverlay, DialogTitle } from './atoms';
 
 type DialogProps = PropsWithChildren & {
   isOpen: boolean;

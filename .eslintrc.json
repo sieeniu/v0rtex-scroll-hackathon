@@ -1,100 +1,43 @@
 {
-  "$schema": "https://json.schemastore.org/eslintrc.json",
   "root": true,
+  "extends": [
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "next/core-web-vitals",
+    "plugin:prettier/recommended"
+  ],
   "plugins": [
-    "@typescript-eslint",
-    "import"
+    "simple-import-sort",
+    "@graphql-eslint"
   ],
   "parserOptions": {
     "project": true
   },
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
-    "prettier",
-    "next/core-web-vitals"
-  ],
   "rules": {
-    "import/order": "error",
-    "import/no-mutable-exports": "error",
-    "import/no-named-as-default": "off",
-    "import/no-cycle": "error",
+    "@typescript-eslint/no-shadow": "error",
+    "import/no-cycle": [
+      "error",
+      {
+        "maxDepth": 10,
+        "ignoreExternal": true
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "no-restricted-imports": [
+      "error",
+      {
+        "name": "react-i18next",
+        "message": "Please use next-18next instead."
+      }
+    ],
     "@typescript-eslint/ban-types": [
       "error",
       {
+        "extendDefaults": true,
         "types": {
           "{}": false
         }
       }
-    ],
-    "@typescript-eslint/consistent-type-imports": [
-      "error",
-      {
-        "prefer": "type-imports",
-        "fixStyle": "inline-type-imports",
-        "disallowTypeAnnotations": false
-      }
-    ],
-    "import/no-duplicates": [
-      "error",
-      {
-        "prefer-inline": true
-      }
-    ],
-    "import/namespace": [
-      "off"
-    ],
-    "no-empty-pattern": "off",
-    "@typescript-eslint/no-empty-interface": "off",
-    "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/require-await": "off",
-    "@typescript-eslint/return-await": [
-      "error",
-      "in-try-catch"
-    ],
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_"
-      }
-    ],
-    "@typescript-eslint/restrict-template-expressions": [
-      "error",
-      {
-        "allowNumber": true,
-        "allowBoolean": true
-      }
-    ],
-    "@typescript-eslint/no-misused-promises": [
-      "error",
-      {
-        "checksVoidReturn": false
-      }
-    ],
-    "no-restricted-imports": [
-      "error",
-      {
-        "name": "next/router",
-        "message": "Please use next/navigation instead."
-      }
     ]
-  },
-  "overrides": [
-    {
-      "files": [
-        "src/**/*.ts?(x)",
-        "middleware.ts"
-      ],
-      "rules": {
-        "import/no-default-export": "off"
-      }
-    }
-  ],
-  "ignorePatterns": [
-    "*.js",
-    "*.jsx"
-  ]
+  }
 }

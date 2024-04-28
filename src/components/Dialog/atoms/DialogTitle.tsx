@@ -1,6 +1,5 @@
-import * as DialogPrimitive from "@radix-ui/react-dialog";
-
-import styled from "styled-components";
+import * as DialogPrimitive from '@radix-ui/react-dialog';
+import styled from 'styled-components';
 
 const DialogTitle = styled.div`
   font-size: ${({ theme }) => theme.fontSize.default};

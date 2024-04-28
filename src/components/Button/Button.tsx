@@ -1,5 +1,6 @@
-import { type PropsWithChildren, type ReactElement } from "react";
-import { PrimitiveButton } from "./atoms";
+import { type PropsWithChildren, type ReactElement } from 'react';
+
+import { PrimitiveButton } from './atoms';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: ReactElement;
@@ -18,6 +19,6 @@ const Button = ({
   );
 };
 
-Button.displayName = "Button";
+Button.displayName = 'Button';
 
 export { Button };
