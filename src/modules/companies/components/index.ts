@@ -1,2 +1,1 @@
-export { CompanyList } from './CompanyList';
-export { CompanyListHeader } from './CompanyListHeader';
+export * from './CompanyList';

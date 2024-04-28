@@ -15,14 +15,21 @@ const MenuItemList = styled.ul`
 const MenuItem = styled.li<{ $isActive?: boolean }>`
   font-weight: ${({ $isActive }) => ($isActive ? 800 : 500)};
   color: ${({ $isActive, theme }) =>
-    $isActive ? theme.colors.neutral.subtle : theme.colors.neutral.main};
+    $isActive ? theme.colors.neutral.subtle : theme.colors.primary.subtle};
 `;
 
 const StyledNav = styled.nav`
   margin: ${({ theme }) => theme.spacing.xl}
     ${({ theme }) => theme.spacing.page};
+  margin-bottom: ${({ theme }) => theme.spacing.xxxl};
   display: flex;
   justify-content: space-between;
+`;
+
+const AppLogo = styled.span`
+  color: ${({ theme }) => theme.colors.success};
+  font-weight: 800;
+  cursor: default;
 `;
 
 type NavbarProps = {
@@ -34,7 +41,7 @@ export const Navbar = ({ data }: NavbarProps) => {
   return (
     <StyledNav>
       <MenuItemList>
-        <span>NFInvesT</span>
+        <AppLogo>NFInvesT</AppLogo>
         {data.map(item => {
           const isActive = router.pathname === item.href;
           return (

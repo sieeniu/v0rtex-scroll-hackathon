@@ -16,6 +16,8 @@ export const theme = {
       strong: '#191927',
       intense: '#141423',
     },
+    success: '#7ba488',
+    error: '#ea968b',
 
     get background() {
       return this.primary.strong;

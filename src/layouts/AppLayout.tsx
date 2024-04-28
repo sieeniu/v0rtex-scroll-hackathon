@@ -9,7 +9,7 @@ const Main = styled.main`
     ${({ theme }) => theme.spacing.page};
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.md};
+  gap: ${({ theme }) => theme.spacing.xl};
 `;
 
 export const AppLayout = ({ children }: PropsWithChildren) => {
