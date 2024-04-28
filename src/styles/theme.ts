@@ -61,6 +61,8 @@ export const theme = {
   icon: {
     sm: '16px',
     md: '24px',
+    lg: '32px',
+    xl: '64px',
     get default() {
       return this.md;
     },

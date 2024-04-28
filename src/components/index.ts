@@ -6,3 +6,4 @@ export * from './PageDescription';
 export * from './Search';
 export * from './Spinner';
 export * from './Table';
+export * from './Carousel';

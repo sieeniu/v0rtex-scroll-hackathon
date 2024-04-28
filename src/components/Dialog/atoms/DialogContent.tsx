@@ -1,5 +1,5 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import React, { forwardRef } from 'react';
+import React, { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
 import styled from 'styled-components';
 
 import { CloseIcon } from '@/components/Icons';
@@ -41,16 +41,20 @@ const CloseButton = styled(DialogPrimitive.Close)`
 const DialogPortal = DialogPrimitive.Portal;
 
 const DialogContent = forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ children, ...props }, ref) => {
+  ElementRef<typeof DialogPrimitive.Content>,
+  ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    showIcon: boolean;
+  }
+>(({ children, showIcon, ...props }, ref) => {
   return (
     <DialogPortal>
       <Content ref={ref} {...props}>
         {children}
-        <CloseButton>
-          <CloseIcon />
-        </CloseButton>
+        {showIcon && (
+          <CloseButton>
+            <CloseIcon />
+          </CloseButton>
+        )}
       </Content>
     </DialogPortal>
   );

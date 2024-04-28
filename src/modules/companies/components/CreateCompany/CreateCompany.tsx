@@ -31,7 +31,6 @@ export const CreateCompany = () => {
   const onSubmit = (formData: CreateCompanySchema) => {
     console.log(formData);
   };
-
   return (
     <FormWrapper>
       <Form form={form} name="createCompanyForm" onSubmit={onSubmit}>
