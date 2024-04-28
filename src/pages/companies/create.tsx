@@ -1,26 +1,26 @@
-import { type ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import { Heading, PageDescription } from '@/components';
 import { AppLayout } from '@/layouts/AppLayout';
-import { CompanyList } from '@/modules/companies';
+import { CreateCompany } from '@/modules/companies';
 
-import { type NextPageWithLayout } from '../_app';
+import { NextPageWithLayout } from '../_app';
 
-const Companies: NextPageWithLayout = () => {
+const CreateCompanyPage: NextPageWithLayout = () => {
   return (
     <>
-      <Heading size="h1">Companies</Heading>
+      <Heading size="h1">Create company</Heading>
       <PageDescription>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </PageDescription>
-      <CompanyList />
+      <CreateCompany />
     </>
   );
 };
 
-Companies.getLayout = function getLayout(page: ReactElement) {
+CreateCompanyPage.getLayout = function getLayout(page: ReactElement) {
   return <AppLayout>{page}</AppLayout>;
 };
 
-export default Companies;
+export default CreateCompanyPage;

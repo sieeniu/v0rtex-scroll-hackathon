@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
+        display: inline-flex;
         color: unset;
     }
 

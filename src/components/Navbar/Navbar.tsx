@@ -33,7 +33,7 @@ const StyledNav = styled.nav`
 `;
 
 const AppLogo = styled.span`
-  color: ${({ theme }) => theme.colors.success};
+  color: ${({ theme }) => theme.colors.success.main};
   font-weight: 800;
   cursor: default;
 `;

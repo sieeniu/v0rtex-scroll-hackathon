@@ -1,4 +1,4 @@
-import { montserratFont, systemFonts } from '@/styles/typography';
+import { fontSize, montserratFont, systemFonts } from '@/styles/typography';
 
 export const theme = {
   colors: {
@@ -16,7 +16,10 @@ export const theme = {
       strong: '#191927',
       intense: '#141423',
     },
-    success: '#7ba488',
+    success: {
+      main: '#7ba488',
+      strong: '#6A9572',
+    },
     error: '#ea968b',
 
     get background() {
@@ -26,10 +29,22 @@ export const theme = {
   fontFamily: {
     montserrat: `${montserratFont.style.fontFamily}, ${systemFonts}`,
   },
-  fontSize: {
-    md: '16px',
-    get default() {
-      return this.md;
+  fontSize: fontSize,
+  headings: {
+    h1: {
+      fontSize: fontSize.xl,
+      lineHeight: 1,
+      fontWeight: 700,
+    },
+    h2: {
+      fontSize: fontSize.lg,
+      lineHeight: 1,
+      fontWeight: 600,
+    },
+    h3: {
+      fontSize: fontSize.md,
+      lineHeight: 1.4,
+      fontWeight: 500,
     },
   },
   spacing: {

@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import { ChangeEvent, useMemo, useState } from 'react';
 
-import { type ColumnData, CompanyIcon, Search, Table } from '@/components';
+import {
+  Button,
+  type ColumnData,
+  CompanyIcon,
+  Search,
+  Table,
+} from '@/components';
 import { routes } from '@/routes';
 
 import { useGetCompanies } from '../../hooks';
@@ -54,6 +60,9 @@ export const CompanyList = () => {
     <Wrapper>
       <ButtonContainer>
         <Search placeholder="Search by company name" onSearch={handleSearch} />
+        <Link href={routes.createCompany}>
+          <Button>Create company</Button>
+        </Link>
       </ButtonContainer>
       <Table data={tableData} columns={columns} isLoading={isLoading} />
     </Wrapper>

@@ -7,4 +7,13 @@ export const montserratFont = Montserrat({
   variable: '--font-montserrat',
 });
 
+export const fontSize = {
+  md: '16px',
+  lg: '24px',
+  xl: '36px',
+  get default() {
+    return this.md;
+  },
+} as const;
+
 export const systemFonts = `-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif`;
