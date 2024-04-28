@@ -6,6 +6,7 @@ export type NavLink = {
   href: string;
   icon?: FunctionComponent<SVGAttributes<SVGElement>>;
   label: string;
+  pattern: string;
 };
 
 export const useNavigation = () => {
@@ -13,10 +14,12 @@ export const useNavigation = () => {
     {
       href: routes.home,
       label: 'Home',
+      pattern: '^/$',
     },
     {
       href: routes.companies,
       label: 'Companies',
+      pattern: '^/companies',
     },
   ];
 

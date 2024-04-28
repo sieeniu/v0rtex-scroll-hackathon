@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import { type NavLink } from '@/hooks';
 import { Button, WalletIcon } from '@/components';
+import { type NavLink } from '@/hooks';
 
 const MenuItemList = styled.ul`
   list-style-type: none;
@@ -43,13 +43,13 @@ type NavbarProps = {
 };
 
 export const Navbar = ({ data }: NavbarProps) => {
-  const router = useRouter();
+  const { pathname } = useRouter();
   return (
     <StyledNav>
       <MenuItemList>
         <AppLogo>NFInvesT</AppLogo>
         {data.map(item => {
-          const isActive = router.pathname === item.href;
+          const isActive = !!pathname.match(item.pattern);
           return (
             <Link href={item.href} key={item.href}>
               <MenuItem $isActive={isActive}>{item.label}</MenuItem>

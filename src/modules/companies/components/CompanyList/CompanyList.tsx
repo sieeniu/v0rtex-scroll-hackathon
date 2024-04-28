@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import { ChangeEvent, useMemo, useState } from 'react';
 
 import { type ColumnData, CompanyIcon, Search, Table } from '@/components';
+import { routes } from '@/routes';
 
 import { useGetCompanies } from '../../hooks';
 import { ButtonContainer, CompanyName, Wrapper } from './CompanyList.styles';
@@ -36,10 +38,12 @@ export const CompanyList = () => {
 
     return data.businessCreateds.map(company => ({
       registrationDocuments: (
-        <CompanyName>
-          <CompanyIcon />
-          {company.registrationDocuments}
-        </CompanyName>
+        <Link href={routes.company(company.id)}>
+          <CompanyName>
+            <CompanyIcon />
+            {company.registrationDocuments}
+          </CompanyName>
+        </Link>
       ),
       proofOfAddress: <span>{company.proofOfAddress}</span>,
       taxIDNumber: <span>{company.taxIDNumber}</span>,
