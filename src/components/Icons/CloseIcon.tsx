@@ -1,4 +1,4 @@
-import React, { type SVGAttributes } from "react";
+import { type SVGAttributes } from 'react';
 
 export const CloseIcon = (props: SVGAttributes<SVGElement>) => (
   <svg

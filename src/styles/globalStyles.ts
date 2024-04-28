@@ -1,16 +1,21 @@
-import { createGlobalStyle } from "styled-components";
-import { montserratFont } from "./typography";
+import { createGlobalStyle } from 'styled-components';
+
+import { montserratFont } from './typography';
 
 const GlobalStyle = createGlobalStyle`
     html, body, #__next, main {
-        height: 100%;
+        box-sizing: border-box;
+        height: 100vh;
+        overflow: auto;
+        margin: 0;
+        padding: 0;
     }
 
     body {
         padding: 0;
         margin: 0;
         -webkit-font-smoothing: antialiased;
-        background-color: ${({theme}) => theme.colors.background};
+        background-color: ${({ theme }) => theme.colors.background};
         ${montserratFont.style}
     }
 

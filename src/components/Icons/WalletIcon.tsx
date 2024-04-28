@@ -1,4 +1,4 @@
-import React, { type SVGAttributes } from "react";
+import React, { type SVGAttributes } from 'react';
 
 export const WalletIcon = (props: SVGAttributes<SVGElement>) => (
   <svg
