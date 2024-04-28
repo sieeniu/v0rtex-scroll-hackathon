@@ -1,7 +1,7 @@
 import {
-  createColumnHelper,
   flexRender,
   getCoreRowModel,
+  RowData,
   useReactTable,
 } from '@tanstack/react-table';
 
@@ -13,6 +13,7 @@ import {
   PrimitiveTableHeader,
   PrimitiveTableRow,
 } from './atoms';
+import { createColumnHelper } from './createColumnHelper';
 
 export type ColumnData = {
   label: string;
@@ -24,22 +25,19 @@ export type TableProps<T> = {
   isLoading: boolean;
 };
 
-export const Table = <T extends object>({
+export const Table = <T extends RowData>({
   data,
   columns,
   isLoading,
 }: TableProps<T>) => {
   const columnHelper = createColumnHelper<T>();
-
-  const columnsData = Object.entries<ColumnData>(columns).map(([key, column]) =>
-    columnHelper.accessor(key as keyof T, {
-      cell: row => row.getValue(),
-      header: () => <span>{column.label}</span>,
-    }),
-  );
-
   const table = useReactTable({
-    columns: columnsData,
+    columns: Object.entries<ColumnData>(columns).map(([key, column]) =>
+      columnHelper.accessor(key as keyof T, {
+        cell: row => row.getValue(),
+        header: () => <span>{column.label}</span>,
+      }),
+    ),
     data,
     getCoreRowModel: getCoreRowModel(),
   });
