@@ -20,7 +20,7 @@ const MenuItem = styled.li<{ $isActive?: boolean }>`
     $isActive ? theme.colors.neutral.subtle : theme.colors.primary.subtle};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.neutral.subtle};
+    color: ${({ theme }) => theme.colors.neutral.main};
   }
 `;
 
