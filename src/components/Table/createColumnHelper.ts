@@ -1,5 +1,9 @@
-import { AccessorColumnDef, AccessorKeyColumnDef } from '@tanstack/react-table';
-import { DisplayColumnDef, GroupColumnDef } from '@tanstack/table-core';
+import type {
+  AccessorColumnDef,
+  AccessorKeyColumnDef,
+  DisplayColumnDef,
+  GroupColumnDef,
+} from '@tanstack/react-table';
 
 export function createColumnHelper<T>() {
   return {

@@ -4,9 +4,10 @@ import {
   GetCompanyListQuery,
   GetCompanyListQueryVariables,
 } from '@/gql/graphql';
+import { QueryConfig } from '@/types/QueryConfig';
+
 import { getCompanies } from '../api';
 import { companiesQueryKeys } from '../common';
-import { QueryConfig } from '@/types/QueryConfig';
 
 export const useGetCompanies = (
   params: GetCompanyListQueryVariables,
