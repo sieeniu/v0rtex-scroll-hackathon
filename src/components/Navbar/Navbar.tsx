@@ -6,18 +6,22 @@ import { type NavLink } from '@/hooks';
 import { Button, WalletIcon } from '@/components';
 
 const MenuItemList = styled.ul`
-    list-style-type: none;
-    display: inline-flex;
-    align-items: center;
-    gap: ${({ theme }) => theme.spacing.xxl};
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  display: inline-flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.xxl};
+  margin: 0;
+  padding: 0;
 `;
 
 const MenuItem = styled.li<{ $isActive?: boolean }>`
   font-weight: ${({ $isActive }) => ($isActive ? 800 : 500)};
   color: ${({ $isActive, theme }) =>
     $isActive ? theme.colors.neutral.subtle : theme.colors.primary.subtle};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.neutral.subtle};
+  }
 `;
 
 const StyledNav = styled.nav`
