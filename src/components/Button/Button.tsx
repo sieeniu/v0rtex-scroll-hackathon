@@ -1,18 +1,26 @@
-import { type PropsWithChildren, type ReactElement } from 'react';
+import type {
+  ButtonHTMLAttributes,
+  PropsWithChildren,
+  ReactElement,
+} from 'react';
 
 import { PrimitiveButton } from './atoms';
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonVariant = 'primary' | 'default';
+
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: ReactElement;
+  variant?: ButtonVariant;
 };
 
 const Button = ({
   children,
   icon,
+  variant = 'default',
   ...props
 }: PropsWithChildren<ButtonProps>) => {
   return (
-    <PrimitiveButton {...props}>
+    <PrimitiveButton $variant={variant} {...props}>
       {icon && icon}
       {children}
     </PrimitiveButton>
