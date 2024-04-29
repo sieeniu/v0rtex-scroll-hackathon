@@ -5,8 +5,6 @@ import { montserratFont } from './typography';
 const GlobalStyle = createGlobalStyle`
     html, body, #__next, main {
         box-sizing: border-box;
-        height: 100vh;
-        overflow: auto;
         margin: 0;
         padding: 0;
     }

@@ -11,8 +11,10 @@ import {
   CarouselSlideImage,
   CarouselSlideNumber,
   CarouselViewPort,
+  CarouselWrapper,
 } from './Carousel.styles';
 import { DotButton, useDotButton } from './CarouselDotButton';
+import styled from 'styled-components';
 
 type CarouselProps = {
   slides: number[];
@@ -28,7 +30,7 @@ export const Carousel = ({ slides, options }: CarouselProps) => {
     useDotButton(emblaApi);
 
   return (
-    <>
+    <CarouselWrapper>
       <CarouselViewPort ref={emblaRef}>
         <CarouselContainer>
           {slides.map((value, index) => (
@@ -57,6 +59,6 @@ export const Carousel = ({ slides, options }: CarouselProps) => {
           ))}
         </CarouselDots>
       </CarouselControls>
-    </>
+    </CarouselWrapper>
   );
 };
