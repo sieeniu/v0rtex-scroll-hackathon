@@ -14,7 +14,6 @@ import {
   CarouselWrapper,
 } from './Carousel.styles';
 import { DotButton, useDotButton } from './CarouselDotButton';
-import styled from 'styled-components';
 
 type CarouselProps = {
   slides: number[];

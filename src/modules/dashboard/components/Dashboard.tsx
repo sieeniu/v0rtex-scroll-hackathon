@@ -1,6 +1,7 @@
+import styled from 'styled-components';
+
 import { Carousel, Divider } from '@/components';
 import { NewestProjects } from '@/modules/dashboard';
-import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;

@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import { Button, UserCircleIcon, WalletIcon } from '@/components';
+import { Button, WalletIcon } from '@/components';
 import { type NavLink } from '@/hooks';
 
 const MenuItemList = styled.ul`
@@ -89,7 +89,7 @@ export const Navbar = ({ data }: NavbarProps) => {
           )}
           {account && (
             <MenuItem>
-              <UserCircleIcon />
+              <WalletIcon />
               {account}
             </MenuItem>
           )}

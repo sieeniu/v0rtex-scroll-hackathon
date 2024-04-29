@@ -1,10 +1,18 @@
-import { type ColumnData, CompanyIcon, Table, Heading } from '@/components';
-import { useGetCompanies } from '@/modules/companies/hooks';
-import { useMemo } from 'react';
 import Link from 'next/link';
-import { routes } from '@/routes';
-import { CompanyName } from '@/modules/companies';
+import { useMemo } from 'react';
 import styled from 'styled-components';
+
+import {
+  Button,
+  type ColumnData,
+  CompanyIcon,
+  Heading,
+  MarketplaceIcon,
+  Table,
+} from '@/components';
+import { CompanyName } from '@/modules/companies';
+import { useGetCompanies } from '@/modules/companies/hooks';
+import { routes } from '@/routes';
 
 const Wrapper = styled.div`
   position: relative;
@@ -18,6 +26,12 @@ const Section = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xl};
   width: 100%;
+`;
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const NewestProjects = () => {
@@ -61,11 +75,25 @@ export const NewestProjects = () => {
   return (
     <Wrapper>
       <Section>
-        <Heading size="h2">Newest projects</Heading>
+        <Header>
+          <Heading size="h2">Newest projects</Heading>
+          <Link href={routes.companies}>
+            <Button variant="primary" icon={<CompanyIcon />}>
+              Go to companies
+            </Button>
+          </Link>
+        </Header>
         <Table data={tableData} columns={columns} isLoading={isLoading} />
       </Section>
       <Section>
-        <Heading size="h2">Newest Tokens</Heading>
+        <Header>
+          <Heading size="h2">Newest Tokens</Heading>
+          <Link href={routes.marketplace}>
+            <Button variant="primary" icon={<MarketplaceIcon />}>
+              Go to marketplace
+            </Button>
+          </Link>
+        </Header>
         <Table data={tableData} columns={columns} isLoading={isLoading} />
       </Section>
     </Wrapper>
