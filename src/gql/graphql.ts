@@ -1,37 +1,49 @@
 /* eslint-disable */
 import type { DocumentTypeDecoration } from '@graphql-typed-document-node/core';
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  BigDecimal: { input: unknown; output: unknown; }
-  BigInt: { input: unknown; output: unknown; }
-  Bytes: { input: unknown; output: unknown; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  BigDecimal: { input: unknown; output: unknown };
+  BigInt: { input: unknown; output: unknown };
+  Bytes: { input: unknown; output: unknown };
   /**
    * 8 bytes signed integer
    *
    */
-  Int8: { input: unknown; output: unknown; }
+  Int8: { input: unknown; output: unknown };
   /**
    * A string representation of microseconds UNIX timestamp (16 digits)
    *
    */
-  Timestamp: { input: unknown; output: unknown; }
+  Timestamp: { input: unknown; output: unknown };
 };
 
-export type Aggregation_Interval =
-  | 'day'
-  | 'hour';
+export type Aggregation_Interval = 'day' | 'hour';
 
 export type BlockChangedFilter = {
   number_gte: Scalars['Int']['input'];
@@ -122,7 +134,9 @@ export type BusinessCreated_Filter = {
   businessWebsite_not_ends_with_nocase?: InputMaybe<Scalars['String']['input']>;
   businessWebsite_not_in?: InputMaybe<Array<Scalars['String']['input']>>;
   businessWebsite_not_starts_with?: InputMaybe<Scalars['String']['input']>;
-  businessWebsite_not_starts_with_nocase?: InputMaybe<Scalars['String']['input']>;
+  businessWebsite_not_starts_with_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   businessWebsite_starts_with?: InputMaybe<Scalars['String']['input']>;
   businessWebsite_starts_with_nocase?: InputMaybe<Scalars['String']['input']>;
   financialDocuments?: InputMaybe<Scalars['String']['input']>;
@@ -137,14 +151,22 @@ export type BusinessCreated_Filter = {
   financialDocuments_lte?: InputMaybe<Scalars['String']['input']>;
   financialDocuments_not?: InputMaybe<Scalars['String']['input']>;
   financialDocuments_not_contains?: InputMaybe<Scalars['String']['input']>;
-  financialDocuments_not_contains_nocase?: InputMaybe<Scalars['String']['input']>;
+  financialDocuments_not_contains_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   financialDocuments_not_ends_with?: InputMaybe<Scalars['String']['input']>;
-  financialDocuments_not_ends_with_nocase?: InputMaybe<Scalars['String']['input']>;
+  financialDocuments_not_ends_with_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   financialDocuments_not_in?: InputMaybe<Array<Scalars['String']['input']>>;
   financialDocuments_not_starts_with?: InputMaybe<Scalars['String']['input']>;
-  financialDocuments_not_starts_with_nocase?: InputMaybe<Scalars['String']['input']>;
+  financialDocuments_not_starts_with_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   financialDocuments_starts_with?: InputMaybe<Scalars['String']['input']>;
-  financialDocuments_starts_with_nocase?: InputMaybe<Scalars['String']['input']>;
+  financialDocuments_starts_with_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   id?: InputMaybe<Scalars['ID']['input']>;
   id_gt?: InputMaybe<Scalars['ID']['input']>;
   id_gte?: InputMaybe<Scalars['ID']['input']>;
@@ -171,14 +193,20 @@ export type BusinessCreated_Filter = {
   proofOfAddress_not_ends_with_nocase?: InputMaybe<Scalars['String']['input']>;
   proofOfAddress_not_in?: InputMaybe<Array<Scalars['String']['input']>>;
   proofOfAddress_not_starts_with?: InputMaybe<Scalars['String']['input']>;
-  proofOfAddress_not_starts_with_nocase?: InputMaybe<Scalars['String']['input']>;
+  proofOfAddress_not_starts_with_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   proofOfAddress_starts_with?: InputMaybe<Scalars['String']['input']>;
   proofOfAddress_starts_with_nocase?: InputMaybe<Scalars['String']['input']>;
   registrationDocuments?: InputMaybe<Scalars['String']['input']>;
   registrationDocuments_contains?: InputMaybe<Scalars['String']['input']>;
-  registrationDocuments_contains_nocase?: InputMaybe<Scalars['String']['input']>;
+  registrationDocuments_contains_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   registrationDocuments_ends_with?: InputMaybe<Scalars['String']['input']>;
-  registrationDocuments_ends_with_nocase?: InputMaybe<Scalars['String']['input']>;
+  registrationDocuments_ends_with_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   registrationDocuments_gt?: InputMaybe<Scalars['String']['input']>;
   registrationDocuments_gte?: InputMaybe<Scalars['String']['input']>;
   registrationDocuments_in?: InputMaybe<Array<Scalars['String']['input']>>;
@@ -186,14 +214,24 @@ export type BusinessCreated_Filter = {
   registrationDocuments_lte?: InputMaybe<Scalars['String']['input']>;
   registrationDocuments_not?: InputMaybe<Scalars['String']['input']>;
   registrationDocuments_not_contains?: InputMaybe<Scalars['String']['input']>;
-  registrationDocuments_not_contains_nocase?: InputMaybe<Scalars['String']['input']>;
+  registrationDocuments_not_contains_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   registrationDocuments_not_ends_with?: InputMaybe<Scalars['String']['input']>;
-  registrationDocuments_not_ends_with_nocase?: InputMaybe<Scalars['String']['input']>;
+  registrationDocuments_not_ends_with_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   registrationDocuments_not_in?: InputMaybe<Array<Scalars['String']['input']>>;
-  registrationDocuments_not_starts_with?: InputMaybe<Scalars['String']['input']>;
-  registrationDocuments_not_starts_with_nocase?: InputMaybe<Scalars['String']['input']>;
+  registrationDocuments_not_starts_with?: InputMaybe<
+    Scalars['String']['input']
+  >;
+  registrationDocuments_not_starts_with_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   registrationDocuments_starts_with?: InputMaybe<Scalars['String']['input']>;
-  registrationDocuments_starts_with_nocase?: InputMaybe<Scalars['String']['input']>;
+  registrationDocuments_starts_with_nocase?: InputMaybe<
+    Scalars['String']['input']
+  >;
   taxIDNumber?: InputMaybe<Scalars['String']['input']>;
   taxIDNumber_contains?: InputMaybe<Scalars['String']['input']>;
   taxIDNumber_contains_nocase?: InputMaybe<Scalars['String']['input']>;
@@ -444,9 +482,7 @@ export type ListingCreated_OrderBy =
   | 'transactionHash';
 
 /** Defines the order direction, either ascending or descending */
-export type OrderDirection =
-  | 'asc'
-  | 'desc';
+export type OrderDirection = 'asc' | 'desc';
 
 export type Query = {
   /** Access to subgraph metadata */
@@ -461,18 +497,15 @@ export type Query = {
   tokenCreateds: Array<TokenCreated>;
 };
 
-
 export type Query_MetaArgs = {
   block?: InputMaybe<Block_Height>;
 };
-
 
 export type QueryBusinessCreatedArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID']['input'];
   subgraphError?: _SubgraphErrorPolicy_;
 };
-
 
 export type QueryBusinessCreatedsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -484,13 +517,11 @@ export type QueryBusinessCreatedsArgs = {
   where?: InputMaybe<BusinessCreated_Filter>;
 };
 
-
 export type QueryListingBoughtArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID']['input'];
   subgraphError?: _SubgraphErrorPolicy_;
 };
-
 
 export type QueryListingBoughtsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -502,13 +533,11 @@ export type QueryListingBoughtsArgs = {
   where?: InputMaybe<ListingBought_Filter>;
 };
 
-
 export type QueryListingCreatedArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID']['input'];
   subgraphError?: _SubgraphErrorPolicy_;
 };
-
 
 export type QueryListingCreatedsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -520,13 +549,11 @@ export type QueryListingCreatedsArgs = {
   where?: InputMaybe<ListingCreated_Filter>;
 };
 
-
 export type QueryTokenCreatedArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID']['input'];
   subgraphError?: _SubgraphErrorPolicy_;
 };
-
 
 export type QueryTokenCreatedsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -551,18 +578,15 @@ export type Subscription = {
   tokenCreateds: Array<TokenCreated>;
 };
 
-
 export type Subscription_MetaArgs = {
   block?: InputMaybe<Block_Height>;
 };
-
 
 export type SubscriptionBusinessCreatedArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID']['input'];
   subgraphError?: _SubgraphErrorPolicy_;
 };
-
 
 export type SubscriptionBusinessCreatedsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -574,13 +598,11 @@ export type SubscriptionBusinessCreatedsArgs = {
   where?: InputMaybe<BusinessCreated_Filter>;
 };
 
-
 export type SubscriptionListingBoughtArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID']['input'];
   subgraphError?: _SubgraphErrorPolicy_;
 };
-
 
 export type SubscriptionListingBoughtsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -592,13 +614,11 @@ export type SubscriptionListingBoughtsArgs = {
   where?: InputMaybe<ListingBought_Filter>;
 };
 
-
 export type SubscriptionListingCreatedArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID']['input'];
   subgraphError?: _SubgraphErrorPolicy_;
 };
-
 
 export type SubscriptionListingCreatedsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -610,13 +630,11 @@ export type SubscriptionListingCreatedsArgs = {
   where?: InputMaybe<ListingCreated_Filter>;
 };
 
-
 export type SubscriptionTokenCreatedArgs = {
   block?: InputMaybe<Block_Height>;
   id: Scalars['ID']['input'];
   subgraphError?: _SubgraphErrorPolicy_;
 };
-
 
 export type SubscriptionTokenCreatedsArgs = {
   block?: InputMaybe<Block_Height>;
@@ -744,8 +762,26 @@ export type GetCompanyListQueryVariables = Exact<{
   search?: InputMaybe<Scalars['String']['input']>;
 }>;
 
+export type GetCompanyListQuery = {
+  businessCreateds: Array<{
+    id: string;
+    registrationDocuments: string;
+    taxIDNumber: string;
+    proofOfAddress: string;
+  }>;
+};
 
-export type GetCompanyListQuery = { businessCreateds: Array<{ id: string, registrationDocuments: string, taxIDNumber: string, proofOfAddress: string }> };
+export type GetMarketplaceListQueryVariables = Exact<{
+  first: Scalars['Int']['input'];
+}>;
+
+export type GetMarketplaceListQuery = {
+  listingCreateds: Array<{
+    Marketplace_id: string;
+    amount: string;
+    price: string;
+  }>;
+};
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -753,7 +789,10 @@ export class TypedDocumentString<TResult, TVariables>
 {
   __apiType?: DocumentTypeDecoration<TResult, TVariables>['__apiType'];
 
-  constructor(private value: string, public __meta__?: Record<string, any>) {
+  constructor(
+    private value: string,
+    public __meta__?: Record<string, any>,
+  ) {
     super(value);
   }
 
@@ -774,4 +813,19 @@ export const GetCompanyListDocument = new TypedDocumentString(`
     proofOfAddress
   }
 }
-    `) as unknown as TypedDocumentString<GetCompanyListQuery, GetCompanyListQueryVariables>;
+    `) as unknown as TypedDocumentString<
+  GetCompanyListQuery,
+  GetCompanyListQueryVariables
+>;
+export const GetMarketplaceListDocument = new TypedDocumentString(`
+    query GetMarketplaceList($first: Int!) {
+  listingCreateds(first: $first) {
+    Marketplace_id
+    amount
+    price
+  }
+}
+    `) as unknown as TypedDocumentString<
+  GetMarketplaceListQuery,
+  GetMarketplaceListQueryVariables
+>;
