@@ -1,17 +1,19 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { ethers } from 'ethers';
-import ABI from '/Users/szymonlyzwinski/Documents/Ethereum /sienu/src/ABI/BusinessContract.json';
+
 import { Button } from '@/components';
 import { Form, InputField } from '@/components/Form';
+import ABI from '/Users/szymonlyzwinski/Documents/Ethereum /sienu/src/ABI/FactoryContract.json';
+const ethers = require('ethers');
+
+const contractAddress = '0xdd796D528145000f1Df16995cDAaCe5eA6Cf39A6';
+
 import {
   createCompanyDefaults,
   CreateCompanySchema,
   createCompanySchema,
-} from '../../models';
-
-const contractAddress = '0x0A0E8290c4eBb871876Ad4E04110ca5DF023Ea4b';
+} from '../../../companies/models';
 
 const FormWrapper = styled.div`
   width: 800px;
@@ -22,7 +24,7 @@ const ButtonContainer = styled.div`
   display: inline-flex;
 `;
 
-export const CreateCompany = () => {
+export const MintToken = () => {
   const form = useForm<CreateCompanySchema>({
     resolver: zodResolver(createCompanySchema()),
     defaultValues: createCompanyDefaults,
@@ -35,36 +37,17 @@ export const CreateCompany = () => {
     const signer = provider.getSigner();
 
     const contract = new ethers.Contract(contractAddress, ABI, signer);
-    const tx = await contract.createBusiness(
-      formData.registrationDocuments,
-      formData.taxIDNumber,
-      formData.proofOfAddress,
-      formData.bankAccountNumber,
-      formData.financialDocuments,
-      formData.anualReports,
-      formData.businessWebsite,
-    );
-
+    const tx = await contract.createToken(formData.name, formData.symbol);
     await tx.wait();
   };
   return (
     <FormWrapper>
       <Form form={form} name="createCompanyForm" onSubmit={onSubmit}>
-        <InputField name="registrationDocuments" label="Company name" />
-        <InputField name="taxIDNumber" label="Tax ID number" />
-        <InputField name="proofOfAddress" label="Address" />
-        <InputField
-          name="bankAccountNumber"
-          label="IBAN"
-          type="number"
-          min="0"
-        />
-        <InputField name="financialDocuments" label="Documents" />
-        <InputField name="anualReports" label="Annual report" />
-        <InputField name="businessWebsite" label="Website" />
+        <InputField name="tokenName" label="Token name" />
+        <InputField name="tokenSymbol" label="Token Symbol" />
         <ButtonContainer>
           <Button variant="primary" type="submit">
-            Save
+            Mint
           </Button>
         </ButtonContainer>
       </Form>

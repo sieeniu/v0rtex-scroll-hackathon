@@ -21,6 +21,21 @@ export const useNavigation = () => {
       label: 'Companies',
       pattern: '^/companies',
     },
+    {
+      href: routes.mintToken,
+      label: 'Mint token',
+      pattern: '^/mintToken',
+    },
+    {
+      href: routes.createListing,
+      label: 'List Token',
+      pattern: '^/listing',
+    },
+    {
+      href: routes.marketplace,
+      label: 'Marketplace',
+      pattern: '^/marketplace',
+    },
   ];
 
   return { navLinks };
