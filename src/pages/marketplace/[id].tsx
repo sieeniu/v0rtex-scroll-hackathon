@@ -4,6 +4,7 @@ import { ReactElement } from 'react';
 import { Heading, PageDescription } from '@/components';
 import { AppLayout } from '@/layouts/AppLayout';
 import { NextPageWithLayout } from '@/pages/_app';
+import { BuyToken } from '@/modules/token/components/BuyToken/BuyToken';
 
 const CompanyPage: NextPageWithLayout = () => {
   const router = useRouter();
@@ -15,6 +16,7 @@ const CompanyPage: NextPageWithLayout = () => {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </PageDescription>
+      <BuyToken />
     </>
   );
 };

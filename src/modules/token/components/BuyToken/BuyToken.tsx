@@ -1,15 +1,18 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-
+import { ethers } from 'ethers';
 import { Button } from '@/components';
 import { Form, InputField } from '@/components/Form';
+import ABI from '/Users/szymonlyzwinski/Documents/Ethereum /sienu/src/ABI/MarketplaceContract.json';
 
 import {
   createCompanyDefaults,
   CreateCompanySchema,
   createCompanySchema,
 } from '../../../companies/models';
+
+const contractAddress = '0xfDa9377106C66d6C312FA31648F1267e26153470';
 
 const FormWrapper = styled.div`
   width: 800px;
@@ -28,14 +31,19 @@ export const BuyToken = () => {
     criteriaMode: 'all',
   });
 
-  const onSubmit = (formData: CreateCompanySchema) => {
-    console.log(formData);
+  const onSubmit = async (formData: CreateCompanySchema) => {
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(contractAddress, ABI, signer);
+    const tx = await contract.buyToken(formData.tokenID, {
+      value: ethers.utils.parseEther(formData.etherAmount),
+    });
+    await tx.wait();
   };
   return (
     <FormWrapper>
       <Form form={form} name="createCompanyForm" onSubmit={onSubmit}>
-        <InputField name="tokenName" label="Token name" />
-        <InputField name="tokenSymbol" label="Token Symbol" />
         <ButtonContainer>
           <Button variant="primary" type="submit">
             Buy
