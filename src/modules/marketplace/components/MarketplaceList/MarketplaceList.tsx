@@ -40,7 +40,7 @@ export const MarketplaceList = () => {
   const onBuyButtonClick = async (
     data: ElementOfArray<GetMarketplaceListQuery['listingCreateds']>,
   ) => {
-    //await window.ethereum.request({ method: 'eth_requestAccounts' });
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(
