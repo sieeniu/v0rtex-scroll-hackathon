@@ -1,15 +1,14 @@
 import { ethers } from 'ethers';
-import Link from 'next/link';
-import { ChangeEvent, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import styled from 'styled-components';
 
-import { Button, type ColumnData, Dialog, Search, Table } from '@/components';
+import { Button, type ColumnData, Table } from '@/components';
 import { marketplaceContractAbi } from '@/contracts';
-import { UnauthorizedMessage } from '@/modules/auth';
-import { routes } from '@/routes';
+import { GetMarketplaceListQuery, ListingCreated } from '@/gql/graphql';
+import { ElementOfArray } from '@/types/ElementOfArray';
 
 import { useGetMarketplace } from '../../hooks';
-import { ButtonContainer, Wrapper } from './MarketplaceList.styles';
+import { Wrapper } from './MarketplaceList.styles';
 
 const ActionButtonsWrapper = styled.div`
   display: flex;
@@ -38,8 +37,10 @@ export const MarketplaceList = () => {
     [],
   );
 
-  const onBuyButtonClick = async (e: any) => {
-    await window.ethereum.request({ method: 'eth_requestAccounts' });
+  const onBuyButtonClick = async (
+    data: ElementOfArray<GetMarketplaceListQuery['listingCreateds']>,
+  ) => {
+    //await window.ethereum.request({ method: 'eth_requestAccounts' });
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(
@@ -47,8 +48,8 @@ export const MarketplaceList = () => {
       marketplaceContractAbi,
       signer,
     );
-    const tx = await contract.buyToken(e.Marketplace_id, {
-      value: ethers.utils.parseEther(e.price),
+    const tx = await contract.buyToken(data.Marketplace_id, {
+      value: ethers.utils.parseEther(data.price),
     });
     await tx.wait();
   };
