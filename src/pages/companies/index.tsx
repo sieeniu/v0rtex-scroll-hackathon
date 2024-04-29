@@ -11,8 +11,8 @@ const Companies: NextPageWithLayout = () => {
     <>
       <Heading size="h1">Companies</Heading>
       <PageDescription>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Search for the company you are interested in to learn more about its
+        token.
       </PageDescription>
       <CompanyList />
     </>

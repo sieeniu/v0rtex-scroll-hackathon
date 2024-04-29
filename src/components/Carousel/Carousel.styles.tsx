@@ -1,6 +1,12 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
+export const CarouselWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xl};
+`;
+
 export const CarouselViewPort = styled.div`
   overflow: hidden;
 `;

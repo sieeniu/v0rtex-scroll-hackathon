@@ -12,6 +12,7 @@ export const PrimitiveButton = styled.button<{ $variant?: ButtonVariant }>`
   justify-content: center;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.xsm};
+  cursor: pointer;
 
   transition-property: color, background-color, border-color,
     text-decoration-color, fill, stroke;

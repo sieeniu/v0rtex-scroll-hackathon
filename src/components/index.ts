@@ -1,6 +1,7 @@
 export * from './Button';
 export * from './Carousel';
 export * from './Dialog';
+export * from './Divider';
 export * from './Heading';
 export * from './Icons';
 export * from './PageDescription';

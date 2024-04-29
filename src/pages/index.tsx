@@ -11,8 +11,8 @@ const HomePage: NextPageWithLayout = () => {
     <>
       <Heading>Featured projects</Heading>
       <PageDescription>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Projects that are of the greatest interest in our community. Find
+        something for yourself and invest today!
       </PageDescription>
       <Dashboard />
     </>
