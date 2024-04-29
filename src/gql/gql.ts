@@ -15,12 +15,17 @@ import * as types from './graphql';
  */
 const documents = {
     "query GetCompanyList($first: Int!, $search: String) {\n  businessCreateds(\n    first: $first\n    where: {registrationDocuments_contains_nocase: $search}\n  ) {\n    id\n    registrationDocuments\n    taxIDNumber\n    proofOfAddress\n  }\n}": types.GetCompanyListDocument,
+    "query GetMarketplaceList($first: Int!) {\n  listingCreateds(first: $first) {\n    Marketplace_id\n    amount\n    price\n  }\n}": types.GetMarketplaceListDocument,
 };
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "query GetCompanyList($first: Int!, $search: String) {\n  businessCreateds(\n    first: $first\n    where: {registrationDocuments_contains_nocase: $search}\n  ) {\n    id\n    registrationDocuments\n    taxIDNumber\n    proofOfAddress\n  }\n}"): typeof import('./graphql').GetCompanyListDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query GetMarketplaceList($first: Int!) {\n  listingCreateds(first: $first) {\n    Marketplace_id\n    amount\n    price\n  }\n}"): typeof import('./graphql').GetMarketplaceListDocument;
 
 
 export function graphql(source: string) {

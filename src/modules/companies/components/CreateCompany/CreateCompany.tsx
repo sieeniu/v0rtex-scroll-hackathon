@@ -1,10 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ethers } from 'ethers';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { ethers } from 'ethers';
-import ABI from '/Users/szymonlyzwinski/Documents/Ethereum /sienu/src/ABI/BusinessContract.json';
+
 import { Button } from '@/components';
 import { Form, InputField } from '@/components/Form';
+import { businessContractAbi } from '@/contracts';
+
 import {
   createCompanyDefaults,
   CreateCompanySchema,
@@ -34,7 +36,11 @@ export const CreateCompany = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
-    const contract = new ethers.Contract(contractAddress, ABI, signer);
+    const contract = new ethers.Contract(
+      contractAddress,
+      businessContractAbi,
+      signer,
+    );
     const tx = await contract.createBusiness(
       formData.registrationDocuments,
       formData.taxIDNumber,

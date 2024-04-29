@@ -1,19 +1,17 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ethers } from 'ethers';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 import { Button } from '@/components';
 import { Form, InputField } from '@/components/Form';
-import ABI from '/Users/szymonlyzwinski/Documents/Ethereum /sienu/src/ABI/FactoryContract.json';
-const ethers = require('ethers');
-
-const contractAddress = '0xdd796D528145000f1Df16995cDAaCe5eA6Cf39A6';
+import { factoryContractAbi } from '@/contracts';
 
 import {
-  createCompanyDefaults,
-  CreateCompanySchema,
-  createCompanySchema,
-} from '../../../companies/models';
+  mintTokenDefaults,
+  type MintTokenSchema,
+  mintTokenSchema,
+} from '../../models';
 
 const FormWrapper = styled.div`
   width: 800px;
@@ -25,19 +23,28 @@ const ButtonContainer = styled.div`
 `;
 
 export const MintToken = () => {
-  const form = useForm<CreateCompanySchema>({
-    resolver: zodResolver(createCompanySchema()),
-    defaultValues: createCompanyDefaults,
+  const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as string;
+
+  const form = useForm<MintTokenSchema>({
+    resolver: zodResolver(mintTokenSchema()),
+    defaultValues: mintTokenDefaults,
     mode: 'all',
     criteriaMode: 'all',
   });
 
-  const onSubmit = async (formData: CreateCompanySchema) => {
+  const onSubmit = async (formData: MintTokenSchema) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
-    const contract = new ethers.Contract(contractAddress, ABI, signer);
-    const tx = await contract.createToken(formData.name, formData.symbol);
+    const contract = new ethers.Contract(
+      contractAddress,
+      factoryContractAbi,
+      signer,
+    );
+    const tx = await contract.createToken(
+      formData.tokenName,
+      formData.tokenSymbol,
+    );
     await tx.wait();
   };
   return (

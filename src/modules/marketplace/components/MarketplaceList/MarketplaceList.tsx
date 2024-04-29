@@ -1,72 +1,79 @@
+import { ethers } from 'ethers';
 import Link from 'next/link';
 import { ChangeEvent, useMemo, useState } from 'react';
+import styled from 'styled-components';
 
-import {
-  Button,
-  type ColumnData,
-  CompanyIcon,
-  Search,
-  Table,
-} from '@/components';
+import { Button, type ColumnData, Dialog, Search, Table } from '@/components';
+import { marketplaceContractAbi } from '@/contracts';
+import { UnauthorizedMessage } from '@/modules/auth';
 import { routes } from '@/routes';
 
-import { useGetCompanies } from '../../../companies/hooks';
-import {
-  ButtonContainer,
-  CompanyName,
-  Wrapper,
-} from './MarketplaceList.styles';
+import { useGetMarketplace } from '../../hooks';
+import { ButtonContainer, Wrapper } from './MarketplaceList.styles';
+
+const ActionButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: end;
+`;
 
 export const MarketplaceList = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const contractAddress = process.env.NEXT_PUBLIC_BUY_TOKEN_ADDRESS as string;
 
-  const { data, isLoading } = useGetCompanies({
+  const { data, isLoading } = useGetMarketplace({
     first: 10,
-    search: searchValue,
   });
-  const handleSearch = (ev: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(ev.target.value);
-  };
 
   const columns: Record<string, ColumnData> = useMemo(
     () => ({
-      registrationDocuments: {
-        label: 'Tokens',
-      },
-      proofOfAddress: {
+      amount: {
         label: 'Amount',
       },
-      taxIDNumber: {
+      price: {
         label: 'Price',
+      },
+      actionButtons: {
+        label: '',
       },
     }),
     [],
   );
 
+  const onBuyButtonClick = async (e: any) => {
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(
+      contractAddress,
+      marketplaceContractAbi,
+      signer,
+    );
+    const tx = await contract.buyToken(e.Marketplace_id, {
+      value: ethers.utils.parseEther(e.price),
+    });
+    await tx.wait();
+  };
+
   const tableData = useMemo(() => {
     if (!data) return [];
 
-    return data.businessCreateds.map(company => ({
-      registrationDocuments: (
-        <Link href={routes.company(company.id)}>
-          <CompanyName>
-            <CompanyIcon />
-            {company.registrationDocuments}
-          </CompanyName>
-        </Link>
+    return data.listingCreateds.map(token => ({
+      amount: <span>{token.amount}</span>,
+      price: <span>{token.price} ETH</span>,
+      actionButtons: (
+        <ActionButtonsWrapper>
+          <Button onClick={() => onBuyButtonClick(token)} variant="primary">
+            Buy
+          </Button>
+        </ActionButtonsWrapper>
       ),
-      proofOfAddress: <span>{company.proofOfAddress}</span>,
-      taxIDNumber: <span>{company.taxIDNumber}</span>,
     }));
   }, [data]);
 
   return (
-    <Wrapper>
-      <ButtonContainer>
-        <Search placeholder="Search by token name" onSearch={handleSearch} />
-        <Link href={routes.createCompany}></Link>
-      </ButtonContainer>
-      <Table data={tableData} columns={columns} isLoading={isLoading} />
-    </Wrapper>
+    <>
+      <Wrapper>
+        <Table data={tableData} columns={columns} isLoading={isLoading} />
+      </Wrapper>
+    </>
   );
 };
