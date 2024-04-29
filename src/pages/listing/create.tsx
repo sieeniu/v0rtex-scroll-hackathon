@@ -20,8 +20,8 @@ const CreateListingPage: NextPageWithLayout = () => {
     <>
       <Heading size="h1">List Your Token</Heading>
       <PageDescription>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        List your token on our marketplace! Set its price and let is get
+        started!
       </PageDescription>
       <ListToken />
     </>

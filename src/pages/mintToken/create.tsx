@@ -1,4 +1,3 @@
-import { useAccount } from '@particle-network/connect-react-ui';
 import { ReactElement, useEffect, useState } from 'react';
 
 import { Heading, PageDescription } from '@/components';
@@ -8,8 +7,6 @@ import { MintToken } from '@/modules/companies';
 import { NextPageWithLayout } from '../_app';
 
 const CreateTokenPage: NextPageWithLayout = () => {
-  const account = useAccount();
-
   const [ready, setReady] = useState<boolean>();
 
   useEffect(() => {
@@ -23,8 +20,8 @@ const CreateTokenPage: NextPageWithLayout = () => {
     <>
       <Heading size="h1">Mint Token</Heading>
       <PageDescription>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Here you can mint your own token, which will allow other users to invest
+        in your company!
       </PageDescription>
       <MintToken />
     </>

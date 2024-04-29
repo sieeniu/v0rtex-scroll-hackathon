@@ -40,7 +40,7 @@ export const MarketplaceList = () => {
   const onBuyButtonClick = async (
     data: ElementOfArray<GetMarketplaceListQuery['listingCreateds']>,
   ) => {
-    //await window.ethereum.request({ method: 'eth_requestAccounts' });
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(
@@ -59,7 +59,7 @@ export const MarketplaceList = () => {
 
     return data.listingCreateds.map(token => ({
       amount: <span>{token.amount}</span>,
-      price: <span>{token.price} ETH</span>,
+      price: <span>{token.price}$</span>,
       actionButtons: (
         <ActionButtonsWrapper>
           <Button onClick={() => onBuyButtonClick(token)} variant="primary">

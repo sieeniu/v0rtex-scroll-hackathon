@@ -11,8 +11,7 @@ const Marketplace: NextPageWithLayout = () => {
     <>
       <Heading size="h1">Marketplace</Heading>
       <PageDescription>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Here you can buy and sell tokens of individual companies.
       </PageDescription>
       <MarketplaceList />
     </>
