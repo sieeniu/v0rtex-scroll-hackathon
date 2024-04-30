@@ -11,6 +11,6 @@ export const PrimitiveInput = styled.input`
   font-family: ${({ theme }) => theme.fontFamily.montserrat};
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.neutral.strong};
+    color: ${({ theme }) => theme.colors.primary.subtle};
   }
 `;

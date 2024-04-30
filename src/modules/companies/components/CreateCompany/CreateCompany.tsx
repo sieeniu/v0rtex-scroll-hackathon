@@ -56,18 +56,39 @@ export const CreateCompany = () => {
   return (
     <FormWrapper>
       <Form form={form} name="createCompanyForm" onSubmit={onSubmit}>
-        <InputField name="registrationDocuments" label="Company name" />
-        <InputField name="taxIDNumber" label="Tax ID number" />
-        <InputField name="proofOfAddress" label="Address" />
+        <InputField
+          name="registrationDocuments"
+          label="Company name"
+          placeholder="Full name of the company"
+        />
+        <InputField
+          name="taxIDNumber"
+          label="Tax ID number"
+          placeholder="Taxpayer identification number"
+        />
+        <InputField
+          name="proofOfAddress"
+          label="Address"
+          placeholder="Street, City - Post Code"
+        />
         <InputField
           name="bankAccountNumber"
           label="IBAN"
           type="number"
+          placeholder="Bank account number"
           min="0"
         />
         <InputField name="financialDocuments" label="Documents" />
-        <InputField name="anualReports" label="Annual report" />
-        <InputField name="businessWebsite" label="Website" />
+        <InputField
+          name="anualReports"
+          label="Annual report"
+          placeholder="In thousands of dollars"
+        />
+        <InputField
+          name="businessWebsite"
+          label="Website"
+          placeholder="Full URL address of the company"
+        />
         <ButtonContainer>
           <Button variant="primary" type="submit">
             Save
