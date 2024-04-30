@@ -14,6 +14,7 @@ import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from '@/styles/globalStyles';
 import { theme } from '@/styles/theme';
+import { AuthContextProvider } from '@/modules/auth/components/AuthContextProvider';
 
 export type NextPageWithLayout<P = unknown, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -57,7 +58,9 @@ export default function App({
               }),
             }}
           >
-            {getLayout(<Component {...pageProps} />)}
+            <AuthContextProvider>
+              {getLayout(<Component {...pageProps} />)}
+            </AuthContextProvider>
           </ModalProvider>
           <GlobalStyles />
         </ThemeProvider>

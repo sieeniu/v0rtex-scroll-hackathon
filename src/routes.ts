@@ -1,5 +1,6 @@
 export const routes = {
   home: '/',
+  login: '/login',
   companies: '/companies',
   company: (id: string) => `/companies/${id}`,
   createCompany: '/companies/create',
