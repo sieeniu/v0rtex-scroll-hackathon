@@ -13,8 +13,6 @@ import {
   createCompanySchema,
 } from '../../models';
 
-const contractAddress = '0x0A0E8290c4eBb871876Ad4E04110ca5DF023Ea4b';
-
 const FormWrapper = styled.div`
   width: 800px;
 `;
@@ -25,6 +23,9 @@ const ButtonContainer = styled.div`
 `;
 
 export const CreateCompany = () => {
+  const contractAddress = process.env
+    .NEXT_PUBLIC_BUSINESS_MANAGEMENT_ADDRESS as string;
+
   const form = useForm<CreateCompanySchema>({
     resolver: zodResolver(createCompanySchema()),
     defaultValues: createCompanyDefaults,
