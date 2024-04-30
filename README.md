@@ -1,39 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+NFInvesT
 
-## Getting Started
+Trying to connect small-medium businesses with investors world wide! We are developing a decentralized application (
+dApp) designed to link businesses with investors globally. Our platform allows users to explore shares of companies that
+register on our website. Upon registration, each business generates a single ERC-20 token, symbolizing complete
+ownership (100%) of the company.
 
-First, run the development server:
+When seeking investment, a business can list a portion of this token on our marketplace—for instance, 0.10 of the token,
+representing a 10% stake—at a price they determine. This setup transforms our platform into a blockchain-based version
+of "Shark Tank" or "Dragon's Den," but on chain!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Project structure
-
-TODO
-
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+BusinessManagementContract = https://sepolia.scrollscan.dev/address/0x37Be7cc8bFC0d9efc1319b27D9a246adDa6E2485
+TokenFactoryContract = https://sepolia.scrollscan.dev/address/0x83B6BD93054E1650A786bCaF771e40E88881b097#code
+MarketplaceContract = https://sepolia.scrollscan.dev/address/0xd4dFfA1b6972Dd8Ec3e3Cc44D55Bb2118e293486#code
